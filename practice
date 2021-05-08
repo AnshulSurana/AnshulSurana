@@ -1,369 +1,369 @@
-// function fib(n) {
-//     if (n == 1 ) {
-//         return 0
-//     }
-//     if (n == 2) {
-//         return 1;
-//     }
-//     return fib(n-1) + fib(n-2);
-// }
-// function fibo(n) {
-//     if (n == 1) {
-//         return 0
-//     }
-//     if(n == 2) {
-//         return 1
-//     }
-//     //.log(fibo(n-1) + fibo(n - 2));
-//     return fibo(n-1) + fibo(n - 2);
-// }
-// function fibp(n) {
-//     let fa = [0,1,1];
-//     for (let  i = 3; i <= n; i++) {
-//         fa.push(fa[i -1] + fa[i - 2]);
-//     }
-//     console.log(fa);
+function fib(n) {
+    if (n == 1 ) {
+        return 0
+    }
+    if (n == 2) {
+        return 1;
+    }
+    return fib(n-1) + fib(n-2);
+}
+function fibo(n) {
+    if (n == 1) {
+        return 0
+    }
+    if(n == 2) {
+        return 1
+    }
+    //.log(fibo(n-1) + fibo(n - 2));
+    return fibo(n-1) + fibo(n - 2);
+}
+function fibp(n) {
+    let fa = [0,1,1];
+    for (let  i = 3; i <= n; i++) {
+        fa.push(fa[i -1] + fa[i - 2]);
+    }
+    console.log(fa);
 
-// }
-// fibp(6);
-// function fibi(n) {
-//    var f = 0;
-//    if (n <= 2) return 1;
-//    for (let i = 3; i <= n; i++) {
-//        f = f + (i-1);
-//    }
-//    console.log(f)
-//    return f;
-// }
+}
+fibp(6);
+function fibi(n) {
+   var f = 0;
+   if (n <= 2) return 1;
+   for (let i = 3; i <= n; i++) {
+       f = f + (i-1);
+   }
+   console.log(f)
+   return f;
+}
 
-// console.log(fibo(8));
-
-
-// function sort(arr) {
-//     for (let i = 0 ; i < arr.length; i ++) {
-//         for (let j = 0; j > arr.length -1; j++) {
-//             if (arr[i] < arr[j]) {
-//                 swap(arr, i , j);
-//             }
-//         }
-//     }
-//     return arr;
-// }
-
-// var swap2 = (arr, i, j) => {
-//     var temp = arr[i];
-//     arr[i] = arr[j];
-//     arr[j] = temp;
-// }
-
-// function prrob(k, v) {
-//    var daycounter = 0;
-//    var inaDayTask = true;
-//    var set = [];
-//    var sorted = sort(v);
-//    for(let i = 0 ; i < sorted.length - 1; i++) {
-//         if (!((sorted[i+1] - sorted[i]) >= k) && sorted[i+1] !== sorted[i]) {
-//             daycounter++;
-//         }
-//         if (inaDayTask && ((sorted[i+1] - sorted[i]) >= k) === false) {
-//             daycounter++;
-//         }
-//     }
-//     return daycounter;
-// }
-// console.log(prrob(2, [5,4,7]));
-// console.log(prrob(1, [5,3,4,5,6]));
-
-// var xs = ['10', '10', '10'];
-
-// xs = xs.map(str => parseInt(str));
-
-// console.log(xs);
+console.log(fibo(8));
 
 
-// var animals = [
-//   { species: 'Lion', name: 'King' },
-//   { species: 'Whale', name: 'Fail' }
-// ];
+function sort(arr) {
+    for (let i = 0 ; i < arr.length; i ++) {
+        for (let j = 0; j > arr.length -1; j++) {
+            if (arr[i] < arr[j]) {
+                swap(arr, i , j);
+            }
+        }
+    }
+    return arr;
+}
 
-// for (var i = 0; i < animals.length; i++) {
-//   (function(i) {
-//     this.print = function() {
-//       console.log('#' + i + ' ' + this.species
-//                   + ': ' + this.name);
-//     }
-//     this.print();
-//   }).call(animals[i], i);
-// }
+var swap2 = (arr, i, j) => {
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+function prrob(k, v) {
+   var daycounter = 0;
+   var inaDayTask = true;
+   var set = [];
+   var sorted = sort(v);
+   for(let i = 0 ; i < sorted.length - 1; i++) {
+        if (!((sorted[i+1] - sorted[i]) >= k) && sorted[i+1] !== sorted[i]) {
+            daycounter++;
+        }
+        if (inaDayTask && ((sorted[i+1] - sorted[i]) >= k) === false) {
+            daycounter++;
+        }
+    }
+    return daycounter;
+}
+console.log(prrob(2, [5,4,7]));
+console.log(prrob(1, [5,3,4,5,6]));
+
+var xs = ['10', '10', '10'];
+
+xs = xs.map(str => parseInt(str));
+
+console.log(xs);
 
 
-// function fib(nth){
-//   // add whatever parameters you deem necessary - good luck! 
-//   if (nth <= 2) return 1;
-//   return fib(nth - 1) + fib(nth - 2);
-// }
-// var fibres = fib(3);
-// console.log(fibres);
+var animals = [
+  { species: 'Lion', name: 'King' },
+  { species: 'Whale', name: 'Fail' }
+];
 
-// function recursiveRange(num){
-//     var sum = 0;
-//     function recRange(num) {
-//         if (num <= 1) return 1;
-//         return sum + num + recRange(num - 1);
-//     }
-
-//     return recRange(num);
-// }
-// var recres = recursiveRange(10);
-//console.log(recres);
+for (var i = 0; i < animals.length; i++) {
+  (function(i) {
+    this.print = function() {
+      console.log('#' + i + ' ' + this.species
+                  + ': ' + this.name);
+    }
+    this.print();
+  }).call(animals[i], i);
+}
 
 
-// function productOfArray(array) {
-//     if (array.length === 0) return 1;
-//     return array[0] * productOfArray(array.slice(1));
-// }
+function fib(nth){
+  // add whatever parameters you deem necessary - good luck! 
+  if (nth <= 2) return 1;
+  return fib(nth - 1) + fib(nth - 2);
+}
+var fibres = fib(3);
+console.log(fibres);
 
-// var prres = productOfArray([1,2,3,4,5]);
-// console.log(prres);
+function recursiveRange(num){
+    var sum = 0;
+    function recRange(num) {
+        if (num <= 1) return 1;
+        return sum + num + recRange(num - 1);
+    }
 
-// function factorial(num){
-//     if (num <= 0) return 1;
-//     return num * factorial(num -1);
-// }
-// var fres = factorial(5);
-// console.log(fres);
+    return recRange(num);
+}
+var recres = recursiveRange(10);
+console.log(recres);
 
-// function power(base, exp){
-//     var ot = 1;
-//     function pow(base, exp) {
-//         if (exp === 0) {
-//             return ot;
-//         }
-//         ot = base * pow(base, exp - 1);
-//         return ot;
-//     }
-//     pow(base, exp);
 
-//     return ot;
+function productOfArray(array) {
+    if (array.length === 0) return 1;
+    return array[0] * productOfArray(array.slice(1));
+}
+
+var prres = productOfArray([1,2,3,4,5]);
+console.log(prres);
+
+function factorial(num){
+    if (num <= 0) return 1;
+    return num * factorial(num -1);
+}
+var fres = factorial(5);
+console.log(fres);
+
+function power(base, exp){
+    var ot = 1;
+    function pow(base, exp) {
+        if (exp === 0) {
+            return ot;
+        }
+        ot = base * pow(base, exp - 1);
+        return ot;
+    }
+    pow(base, exp);
+
+    return ot;
    
-// }
+}
 
-// var press = power(2,6);
-// console.log(press);
+var press = power(2,6);
+console.log(press);
 
-// function findLongestSubstring(str) {
-//   let longest = 0;
-//   let seen = {};
-//   let start = 0;
+function findLongestSubstring(str) {
+  let longest = 0;
+  let seen = {};
+  let start = 0;
  
-//   for (let i = 0; i < str.length; i++) {
-//     let char = str[i];
-//     if (seen[char]) {
-//       start = Math.max(start, seen[char]);
-//     }
-//     // index - beginning of substring + 1 (to include current in count)
-//     longest = Math.max(longest, i - start + 1);
-//     // store the index of the next char so as to not double count
-//     seen[char] = i + 1;
-//   }
-//   return longest;
-// }
-// var rest = findLongestSubstring('anshulsurana');
-// console.log(rest);
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (seen[char]) {
+      start = Math.max(start, seen[char]);
+    }
+    // index - beginning of substring + 1 (to include current in count)
+    longest = Math.max(longest, i - start + 1);
+    // store the index of the next char so as to not double count
+    seen[char] = i + 1;
+  }
+  return longest;
+}
+var rest = findLongestSubstring('anshulsurana');
+console.log(rest);
 
 
-// function maxSubarraySum(array, len){
-//   // add whatever parameters you deem necessary - good luck!
-//   var sum = 0;
-//   var tempsum = 0;
-//   for (let i = 0; i < len; i++) {
-//       sum += array[i];
-//   }
-//   tempsum = sum;
-//  for (let i = len; i < array.length; i++) {
-//    tempsum = tempsum - array[i - len] + array[i];
-//    sum = Math.max(sum, tempsum);
-//  }
-//  return sum
-// }
+function maxSubarraySum(array, len){
+  // add whatever parameters you deem necessary - good luck!
+  var sum = 0;
+  var tempsum = 0;
+  for (let i = 0; i < len; i++) {
+      sum += array[i];
+  }
+  tempsum = sum;
+ for (let i = len; i < array.length; i++) {
+   tempsum = tempsum - array[i - len] + array[i];
+   sum = Math.max(sum, tempsum);
+ }
+ return sum
+}
 
-// var resw = maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)
-// console.log(resw);
-
-
-// function isSubsequence(word, inthis) {
-//   // good luck. Add any arguments you deem necessary.
-//   var wordMatched = false;
-//   if(inthis.length < word.length) {
-//     return wordMatched;
-//   }
-//   var prev = 0;
-//   var next = 0;
-//   while (prev < word.length && !wordMatched) {
-//     if (word[prev] === inthis[next]) {
-//       prev++;
-//     }
-//     if (prev === word.length) {
-//       wordMatched = true;
-//     }
-//     next++;
-//   }
-//   return wordMatched;
-// }
-// var ress = isSubsequence('hello', 'hiuskdhello world');
-
-// function averagePair(inp, avg){
-//   // add whatever parameters you deem necessary - good luck!
-//   if (inp.length === 0) {
-//     return false;
-//   }
-//   var prev = 0;
-//   var next = inp.length - 1;
-//   var avgv = false;
-//   while(prev < next && !avgv) {
-//     if ((inp[prev] + inp[next]) / 2 > avg) {
-//         next--;
-//     } else if((inp[prev] + inp[next]) / 2 < avg){
-//         next = inp.length - 1;
-//         prev++;
-//     } else {
-//       avgv=true;
-//     }
-//   }
-//   return avgv;
-// }
-// var ress = averagePair([1,2,3], 2.5);
-
-// var input= [1,3,3,5,6,7,10,12,19];
-// 1 + 19 /2 = 10
-// 3 + 19/2 = 11
-// 3 + 12/2 = 7.5
-// skip if pivot value to changed is same.
-// 5 + 19/2 = 12
-// 5 + 12/2 = 8.5
-// 5 + 10/2 = 7.5
-// 6 + 19/2 = 12.5
-// 6 + 12/2 = 9
-// 6 + 10/2 = 8
+var resw = maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)
+console.log(resw);
 
 
-// function areThereDuplicates() {
-//   var aset = new Set(arguments);
-//   var a = aset.size;
-//   aset.add(1)
-//   aset.add(1)
-//   aset.add(1)
-//   aset.add(1)
-//   console.log(aset);
-//    console.log(aset.entries());
-//   return a !== arguments.length;
+function isSubsequence(word, inthis) {
+  // good luck. Add any arguments you deem necessary.
+  var wordMatched = false;
+  if(inthis.length < word.length) {
+    return wordMatched;
+  }
+  var prev = 0;
+  var next = 0;
+  while (prev < word.length && !wordMatched) {
+    if (word[prev] === inthis[next]) {
+      prev++;
+    }
+    if (prev === word.length) {
+      wordMatched = true;
+    }
+    next++;
+  }
+  return wordMatched;
+}
+var ress = isSubsequence('hello', 'hiuskdhello world');
+
+function averagePair(inp, avg){
+  // add whatever parameters you deem necessary - good luck!
+  if (inp.length === 0) {
+    return false;
+  }
+  var prev = 0;
+  var next = inp.length - 1;
+  var avgv = false;
+  while(prev < next && !avgv) {
+    if ((inp[prev] + inp[next]) / 2 > avg) {
+        next--;
+    } else if((inp[prev] + inp[next]) / 2 < avg){
+        next = inp.length - 1;
+        prev++;
+    } else {
+      avgv=true;
+    }
+  }
+  return avgv;
+}
+var ress = averagePair([1,2,3], 2.5);
+
+var input= [1,3,3,5,6,7,10,12,19];
+1 + 19 /2 = 10
+3 + 19/2 = 11
+3 + 12/2 = 7.5
+skip if pivot value to changed is same.
+5 + 19/2 = 12
+5 + 12/2 = 8.5
+5 + 10/2 = 7.5
+6 + 19/2 = 12.5
+6 + 12/2 = 9
+6 + 10/2 = 8
+
+
+function areThereDuplicates() {
+  var aset = new Set(arguments);
+  var a = aset.size;
+  aset.add(1)
+  aset.add(1)
+  aset.add(1)
+  aset.add(1)
+  console.log(aset);
+   console.log(aset.entries());
+  return a !== arguments.length;
   
-// }
-// areThereDuplicates(1,2,3,4,5);
+}
+areThereDuplicates(1,2,3,4,5);
 
-// function areThereDuplicates() {
-//   var a = Array.prototype.slice.call(arguments);
-//   var count = {};
-//   for (let i = 0 ; i < a.length; i++) {
-//     if (count[a[i]]) {
-//        return false;
-//     } else {
-//       count[a[i]] = (count[a[i]] || 0) + 1;
-//     }
-//   }
-//   return true;
-// }
-// areThereDuplicates(1,2,3,5,4,1);
-
-
+function areThereDuplicates() {
+  var a = Array.prototype.slice.call(arguments);
+  var count = {};
+  for (let i = 0 ; i < a.length; i++) {
+    if (count[a[i]]) {
+       return false;
+    } else {
+      count[a[i]] = (count[a[i]] || 0) + 1;
+    }
+  }
+  return true;
+}
+areThereDuplicates(1,2,3,5,4,1);
 
 
 
 
 
-// function validAnagram(f, s){
-//       // add whatever parameters you deem necessary - good luck!
-//       let a = {};
-//       for (let i = 0; i < f.length ; i++) {
-//           console.log('f', a[f[i]]);
-//           if (!a[f[i]]) {
-//               a[f[i]] = 1; 
-//           } else {
-//               a[f[i]] += 1;
-//           }
-//       }
-//         console.log('a', a);
-//       for (let j = 0; j < s.length ; j++) {
-//           console.log('s', a[s[j]]);
-//           if(!a[s[j]])  {
-//                return false;
-//           } else {
-//               a[s[j]] -=1;
-//           }
-//       }
-//       return true;
-//       console.log(a);
-//     }
-//   var res1 = validAnagram('anagrames', 'nagerams');
-//    console.log(res1);
 
-// function countUniqueValues(arr){
-//   var prev = 1;   
-//   // add whatever parameters you deem necessary - good luck!
-//   let el = {};
-//   for(let i = 0 ; i < arr.length; i++ ) {
-//       console.log('e', el);
-//       console.log('i', arr[i]);
-//       el[arr[i]] = (el[arr[i]] || 0) + 1
-//   }
-//   console.log(el)
-//   return Object.keys(el).length
-// }
-// countUniqueValues([1,5,5,1,7,1,2,3]);
-//console.log(res2);
 
-// function sameFrequency(f, s){
-//   // good luck. Add any arguments you deem necessary.
-//   var a = f.toString();
-//   var b = s.toString();
+function validAnagram(f, s){
+      // add whatever parameters you deem necessary - good luck!
+      let a = {};
+      for (let i = 0; i < f.length ; i++) {
+          console.log('f', a[f[i]]);
+          if (!a[f[i]]) {
+              a[f[i]] = 1; 
+          } else {
+              a[f[i]] += 1;
+          }
+      }
+        console.log('a', a);
+      for (let j = 0; j < s.length ; j++) {
+          console.log('s', a[s[j]]);
+          if(!a[s[j]])  {
+               return false;
+          } else {
+              a[s[j]] -=1;
+          }
+      }
+      return true;
+      console.log(a);
+    }
+  var res1 = validAnagram('anagrames', 'nagerams');
+   console.log(res1);
 
-//   if (a.length != b.length) return false;
+function countUniqueValues(arr){
+  var prev = 1;   
+  // add whatever parameters you deem necessary - good luck!
+  let el = {};
+  for(let i = 0 ; i < arr.length; i++ ) {
+      console.log('e', el);
+      console.log('i', arr[i]);
+      el[arr[i]] = (el[arr[i]] || 0) + 1
+  }
+  console.log(el)
+  return Object.keys(el).length
+}
+countUniqueValues([1,5,5,1,7,1,2,3]);
+console.log(res2);
 
-// console.log(a[1]);
-//   var count = {};
-//   var count2 = {};
-//   for(let i = 0 ; i < a.length; i++) {
+function sameFrequency(f, s){
+  // good luck. Add any arguments you deem necessary.
+  var a = f.toString();
+  var b = s.toString();
 
-//     count[a[i]] = (count[a[i]] || 0) + 1; 
-//     count2[b[i]] = (count2[b[i]] || 0) + 1; 
-//   }
-//   console.log(count);
-//   console.log(count2);
-//   for (let j = 0; j < b.length; j ++) {
-//     if (count[j] != count2[j]) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
+  if (a.length != b.length) return false;
 
-// sameFrequency(57356,76553);
-// function chunkArray(array, size) {
-//     let result = []
-//     for (value of array){
-//         console.log('result', result)
-//         let lastArray = result[result.length -1 ]
-//         console.log('lastArray', lastArray)
-//         if(!lastArray || lastArray.length == size){
-//             result.push([value])
-//         } else{
-//             lastArray.push(value)
-//         }
-//     }
-//     return result
-// }
+console.log(a[1]);
+  var count = {};
+  var count2 = {};
+  for(let i = 0 ; i < a.length; i++) {
 
-// console.log(chunkArray([1,2,3,4,56,6,7], 2))
+    count[a[i]] = (count[a[i]] || 0) + 1; 
+    count2[b[i]] = (count2[b[i]] || 0) + 1; 
+  }
+  console.log(count);
+  console.log(count2);
+  for (let j = 0; j < b.length; j ++) {
+    if (count[j] != count2[j]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+sameFrequency(57356,76553);
+function chunkArray(array, size) {
+    let result = []
+    for (value of array){
+        console.log('result', result)
+        let lastArray = result[result.length -1 ]
+        console.log('lastArray', lastArray)
+        if(!lastArray || lastArray.length == size){
+            result.push([value])
+        } else{
+            lastArray.push(value)
+        }
+    }
+    return result
+}
+
+console.log(chunkArray([1,2,3,4,56,6,7], 2))
 function tmac(gym, mem){
     this.gym = 'go'
     this.mem = function() {
