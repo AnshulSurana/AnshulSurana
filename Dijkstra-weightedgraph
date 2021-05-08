@@ -1,0 +1,175 @@
+// class Pq {
+//     constructor() {
+//         this.values = [];
+//     }
+//     enqueue(a, priority) {
+//         this.values.push({val: a, priority});
+//         this.sort();
+//     }
+//     dequeue() {
+//         return this.values.shift();
+//     }
+//     sort() {
+//         this.values.sort((a, b) => a.priority - b.priority);
+//     }
+// }
+class Node {
+    constructor(val, priority) {
+        this.val= val;
+        this.priority = priority;
+    }
+}
+
+class priorityQueue {
+    constructor() {
+        this.values = [];
+    }
+    bubbleUp() {
+         var idx = this.values.length -1;
+         var newN = this.values[idx];
+        while(idx > 0) {
+            var parentIdx = Math.floor(idx - 1 / 2);
+            var parent = this.values[parentIdx];
+            if (newN.priority >= parent.priority) break;
+            this.values[parentIdx] = newN;
+            this.values[idx] = parent;
+            idx = parentIdx;
+        }
+    }
+    enqueue(val, priority) {
+        var newNode = new Node(val, priority);
+        this.values.push(newNode);
+        this.bubbleUp();
+        return this;
+    }
+    sinkDown() {
+        var idx = 0
+        var len = this.values.length;
+        var el = this.values[0];
+        while(true) {
+            var c1I = 2 * idx + 1;
+            var c2I = 2 * idx + 2;
+            var swap = null;
+            if (c1I  < len) {
+                  var c1 = this.values[2 * idx + 1];
+                 if (c1.priority <= el.priority) {
+                    swap = c1I;
+                }
+            }
+            if (c2I < len) {
+                var c2 = this.values[2 * idx + 2];
+                if (swap === null && c2.priority <= el.priority ||
+                swap != null && c2.priority <= c1.priority) {
+                    swap = c2I;
+                }
+            }
+           
+            if (swap === null)break;
+            this.values[idx] = this.values[swap];
+            this.values[swap] = el;
+            idx = swap; 
+        }
+    }
+
+    dequeue() {
+        var deEl = this.values[0];
+        var end = this.values.pop();
+        if (this.values.length > 0) {
+            this.values[0] = end;
+            this.sinkDown();
+        }
+        return deEl;
+    }
+}
+
+
+// // [55,39,41,18,27,12,33];
+// var pq = new priorityQueue();
+// pq.enqueue("common cold", 5);
+// pq.enqueue("gunshot wound", 1);
+// pq.enqueue("high fever", 4);
+// pq.enqueue("broken arm", 2);
+// pq.enqueue("glass in foot", 3);
+
+class weightedGraph {
+    constructor() {
+        this.adjList = {};
+    }
+    addVertex(vertex) {
+        if (!this.adjList[vertex]) return this.adjList[vertex] = [];
+    }
+    addWeightedEdge(v1, v2, w) {
+        this.adjList[v1].push({node: v2, weight: w});
+        this.adjList[v2].push({node: v1, weight: w});
+    }
+    Dijkstra(start, finish) {
+        const Nodes = new priorityQueue();
+        const distances = {};
+        const previous = {};
+        let path = [];
+        let smallest;
+
+        for (let v in this.adjList){
+            if (v === start) {
+                distances[v] = 0;
+                Nodes.enqueue(v, 0);
+            } else {
+                distances[v] = Infinity;
+                Nodes.enqueue(v, Infinity);
+            }
+            previous[v] = null;
+            
+        }
+        while (Nodes.values.length) {
+            smallest = Nodes.dequeue().val;
+            if (smallest === finish) {
+                while(previous[smallest]) {
+                    path.push(smallest);
+                    smallest = previous[smallest];
+                }
+                break;
+            }
+            if (smallest || distances[smallest] !== Infinity) {
+                for (let neighbour in this.adjList[smallest]) {
+                    //find neighbouring node
+                    let neighbourNode = this.adjList[smallest][neighbour];
+                    // calculate distance to neighbouring node
+                    let smallCandidate = distances[smallest] + neighbourNode.weight;
+                    //compare
+                    let nextNeighbour = neighbourNode.node
+                    if (smallCandidate < distances[nextNeighbour]) {
+                        //updating new smallest distance
+                        distances[nextNeighbour] = smallCandidate;
+                        // updating previous - how we got to this neghbour
+                        previous[nextNeighbour] = smallest;
+                        // enqueue in priority queue with new priority
+                        Nodes.enqueue(nextNeighbour, smallCandidate);
+
+                    }
+                
+                }
+            }
+        }
+        console.log(path);
+        return path.concat(smallest).reverse();
+    }
+}
+
+var g = new weightedGraph();
+g.addVertex("a");
+g.addVertex("b");
+g.addVertex("c");
+g.addVertex("d");
+g.addVertex("e");
+g.addVertex("f");
+
+g.addWeightedEdge("a", "b", 4);
+g.addWeightedEdge("a", "c", 2);
+g.addWeightedEdge("b", "e", 3);
+g.addWeightedEdge("c", "d", 2);
+g.addWeightedEdge("c", "f", 4);
+g.addWeightedEdge("d", "e", 3);
+g.addWeightedEdge("d", "f", 1);
+g.addWeightedEdge("e", "f", 1);
+
+g.Dijkstra("a", "e");

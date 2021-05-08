@@ -1,0 +1,153 @@
+class Node {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+        this.prev = null;
+    }
+}
+
+class DoublyLinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null
+        this.length = 0;
+    }
+
+    push(val){
+        var newNode = new Node(val);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            newNode.prev = this.tail;
+            this.tail = newNode;
+        }
+        this.length++;
+        return this;
+    }
+    pop() {
+        if (!this.head) {
+            return undefined;
+        }
+        var current = this.tail;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = this.tail.prev;
+            this.tail.next = null
+            current.prev = null;
+        }
+        this.length--;
+        return current;
+    }
+    shift() {
+        if(!this.head) {
+            return undefined;
+        }
+        var currentHead = this.head;
+        if (this.length === 1) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.head = this.head.next;
+            this.head.prev = null;
+            currentHead.next = null;
+        }
+        this.length--;
+        return currentHead;
+    }
+    unshift(val) {
+        var newNode = new Node(val);
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        newNode.next = this.head;
+        newNode.prev = null;
+        this.head.prev = newNode;
+        this.head = newNode;
+        this.length++;
+        return this;
+    }
+    get(index) {
+        if (!this.head) {
+            return undefined;
+        }
+        if (index >= this.length) {
+            return undefined;
+        }
+        if (index >= this.length/2) {
+            var current = this.tail;
+            var currIn = this.length -1;
+            while(currIn > index) {
+                current = current.prev;
+                currIn--;
+            }
+            return current;
+        } else {
+            var current = this.head;
+            var currIn = 0;
+            while(currIn < index) {
+                current = current.next;
+                currIn++;
+            }
+            return current;
+        }
+    }
+    set(index, val) {
+        var place = this.get(index);
+        if (place !== null) {
+             place.val = val;
+        }
+       return place;
+    }
+    insert(index, val) {
+        var newNode = new Node(val);
+        if (index === 0) return this.unshift(val);
+        if (index === this.length) return this.push(val);
+        if (index > this.length || index < 0) return undefined;
+        var foundPlace = this.get(index - 1);
+        newNode.next = foundPlace.next;
+        newNode.prev = foundPlace.prev;
+        newNode.next.prev = newNode;
+        foundPlace.next = newNode;
+        this.length++;
+        return this.print(this);
+    }
+    remove(index) {
+        if (index === 0) return this.shift();
+        if (index === this.length -1) return this.pop();
+        if (index >= this.length || index < 0) return undefined;
+        var beforeNode = this.get(index-1);
+        var afterNode = beforeNode.next;
+        var furtherNode = afterNode.next;
+        beforeNode.next = furtherNode;
+        furtherNode.prev = beforeNode;
+        afterNode.prev = null;
+        afterNode.next = null;
+        this.length--;
+        return this.print(this);
+    }
+    print() {
+        var currentNode = this.head;
+        var res = [];
+        res.push(currentNode.val)
+        if (!this.head){
+            return res;
+        }
+        while(currentNode.next != null) {
+            currentNode = currentNode.next;
+            res.push(currentNode.val);
+        }
+        return res;
+    }
+
+}
+
+var list = new DoublyLinkedList();
+list.push(1);
+list.push(2);
+list.push(3);
+console.log(list.print());

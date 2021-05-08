@@ -1,0 +1,53 @@
+class Graph{
+    constructor() {
+        this.adjList = {};
+    }
+    addVertex(vertex) {
+        if (this.adjList[vertex]){
+            return false;
+        }
+        this.adjList[vertex] = [];
+        return this;
+    }
+    addEdge(v1, v2) {
+        if (!this.adjList || Object.keys(this.adjList).length < 0) return undefined;
+        if (v1 === v2) return undefined;
+        if (!this.adjList[v1]) {
+            this.addVertex(v1);
+        }
+        if (!this.adjList[v2]) {
+            this.addVertex(v2);
+        }
+        this.adjList[v1].push(v2);
+        this.adjList[v2].push(v1);
+        return this;
+    }
+
+    removeEdge(v1, v2) {
+            //filtering can use .filter()
+        this.adjList[v1] = this.adjList[v1].filter( v => v !== v2);
+        this.adjList[v2] = this.adjList[v2].filter( v => v !== v1);
+    }    
+
+    removeVertex(v) {
+        while(this.adjList[v].length) {
+            const adjv = this.adjList[v].pop();
+            this.removeEdge(v, adjv);
+        }
+        delete this.adjList[v];
+    }
+}
+
+var g = new Graph();
+g.addVertex("Tokyo");
+g.addVertex("Munich");
+g.addVertex("Delhi");
+g.addVertex("Pune");
+g.addVertex("Milan");
+g.addEdge("Tokyo", "Delhi");
+g.addEdge("Tokyo", "Munich");
+g.addEdge("Delhi", "Milan");
+g.addEdge("Milan", "Munich");
+g.addEdge("Tokyo", "Milan");
+g.addEdge("Pune", "Milan");
+g.addEdge("Pune", "Delhi");
