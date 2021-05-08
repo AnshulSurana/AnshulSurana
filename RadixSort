@@ -1,0 +1,32 @@
+function getDigit(num, place) {
+    return Math.floor(num / Math.pow(10, place)) % 10;
+}
+
+function numbOfDigits(num) {
+     return Math.floor(Math.log10(Math.abs(num)) + 1);
+}
+
+function maxNumberOfDigits(nums) {
+    var max = 0;
+     for (let i = 0; i < nums.length; i ++) {
+         max = Math.max(max, numbOfDigits(nums[i]));
+     }
+     return max;
+}
+
+function radixSort(arr) {
+    var max = maxNumberOfDigits(arr);
+    for (let j = 0; j < max; j++) {
+         // bucket creation
+        var arrbuck = Array.from({length : 10}, () => []);
+        for (let i = 0; i < arr.length; i++) { 
+        arrbuck[getDigit(arr[i], j)].push(arr[i]);
+        }
+        console.log(arrbuck);
+        arr = [].concat(...arrbuck);
+        console.log(arr);
+    }
+    return arr;
+}
+
+console.log(radixSort([11,222,341,2,21,1333,4141,0]));

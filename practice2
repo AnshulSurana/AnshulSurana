@@ -1,0 +1,345 @@
+//   function collectStrings(obj) {
+//     var objn = [];
+//     for (var a in obj) {
+//       if (typeof obj[a] === 'string'){
+//        objn = objn.concat(obj[a]);
+//       }  
+//       else if (typeof obj[a] === 'object'){
+//         objn = objn.concat(collectStrings(obj[a]));
+//       } 
+//     }
+//     return objn;
+//   }
+// var objqq = {
+//     stuff: "foo",
+//     data: {
+//         val: {
+//             thing: {
+//                 info: "bar",
+//                 moreInfo: {
+//                     evenMoreInfo: {
+//                         weMadeIt: "baz"
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// var strres = collectStrings(objqq)
+// console.log(strres);
+
+//   function stringifyNumbers(obj) {
+//     var objn = {};
+//     for (var a in obj) {
+//       if (typeof obj[a] === 'number'){
+//         objn[a] = obj[a].toString();
+//       } else if (Array.isArray(obj[a])){
+//         objn[a] = obj[a];
+//       } else if (typeof obj[a] === 'boolean'){
+//         objn[a] = obj[a];
+//       }  
+//       else if (typeof obj[a] === 'object'){
+//         objn[a] = stringifyNumbers(obj[a]);
+//       } 
+//     }
+//     return objn;
+//   }
+// var objq = {
+//     num: 1,
+//     test: [],
+//     data: {
+//         val: 4,
+//         info: {
+//             isRight: true,
+//             random: 66
+//         }
+//     }
+// }
+// var strres = stringifyNumbers(objq)
+// console.log(strres);
+
+// function capitalizeWords (array) {
+//   // add whatever parameters you deem necessary - good luck!
+//   var newarr = []
+//   if (array.length <= 0) return array;
+//   newarr.push(array[0].toUpperCase());
+//   return newarr.concat(capitalizeWords(array.slice(1)));
+// }
+
+// var capres = capitalizeWords(["cat", "dog", "rabbit"]);
+// console.log(capres);
+
+// typeof helps understand the prmitive datatype.
+// for in loop helps in iterating an object over keys
+// for of loop helps in iterating an object over its values.
+
+// function nestedEvenSum(obj) {
+//   var sum = 0;
+//   for(var a in obj) {
+//     if (typeof obj[a] === 'object') {
+//         sum += nestedEvenSum(obj[a]);
+//     } else if (typeof obj[a] === 'number' && obj[a]%2 === 0) {
+//         sum += obj[a];
+//     }
+//   }
+//   return sum;
+// }
+
+
+// var obj1 = {
+//   outer: 2,
+//   obj: {
+//     inner: 2,
+//     otherObj: {
+//       superInner: 2,
+//       notANumber: true,
+//       alsoNotANumber: "yup"
+//     }
+//   }
+// };
+// var nesres = nestedEvenSum(obj1);
+// console.log(nesres);
+// function capitalizeFirst (array) {
+//   if (array.length === 1) {
+//     return [array[0][0].toUpperCase() + array[0].substr(1)];
+//   }
+//   console.log(array.slice(0, -1))
+//   const res = capitalizeFirst(array.slice(0, -1));
+//   const string = array.slice(array.length - 1)[0][0].toUpperCase() + array.slice(array.length-1)[0].substr(1);
+//   res.push(string);
+//   return res;
+// }
+
+// console.log(capitalizeFirst(['cat', 'dog', 'rabbit']));
+
+// function capitalizeWords (array) {
+//   if (array.length === 1) {
+//     return [array[0].toUpperCase()];
+//   }
+//   let res = capitalizeWords(array.slice(0, -1));
+//   res.push(array.slice(array.length-1)[0].toUpperCase());
+//   return res;
+ 
+// }
+// capitalizeWords(['cat', 'dog', 'Rabbit']);
+
+
+// function capitalizeFirst (array) {
+//   // add whatever parameters you deem necessary - good luck!
+//   var newarr = []
+//   if (array.length <= 0) return array;
+//   newarr.push(array[0].slice(0, 1).toUpperCase() + array[0].slice(1, array[0].length));
+//   return newarr.concat(capitalizeFirst(array.slice(1)));
+// }
+
+// var capres = capitalizeFirst(["cat", "dog", "rabbit"]);
+// console.log(capres);
+
+
+// function flatten(oldArr){
+//   var newArr = []
+//   	for(var i = 0; i < oldArr.length; i++){
+//     	if(Array.isArray(oldArr[i])){
+//       		newArr = newArr.concat(flatten(oldArr[i]))
+//     	} else {
+//       		newArr.push(oldArr[i])
+//     	}
+//   } 
+//   return newArr;
+// }
+// var flares = flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]);
+// console.log(flares);
+
+
+// function flatten(array){
+//   // add whatever parameters you deem necessary - good luck!
+//   var final = [];
+//   function flat(array) {
+//      if (array.length <= 0) return 1;
+//      flat(array.slice(1));
+//      if (array[0].length) {
+//          flat(array[0]);
+//      }
+//      if (array[0].length) return ;
+//      return final.push(array[0]);
+//   }
+//   flat(array);
+//   return final.reverse();
+// }
+
+// var flares = flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]);
+// console.log(flares);
+
+// function someRecursive(array, cond){
+//     var result = false;
+//     function someRec(array, cond) {
+//         if (array.length <= 0) {
+//           return false;
+//         }
+//         someRec(array.slice(1), cond);
+//         if (cond(array[0])) {
+//             result = true;
+//         }
+//     }
+//     someRec(array, cond);
+//     return result;
+// }
+
+// var isOdd = val => val % 2 !== 0;
+// var somres = someRecursive([12,21,32,4], val => val > 10);
+// console.log(somres);
+
+
+
+// function isPalindromet(string){
+//   // add whatever parameters you deem necessary - good luck!
+//   if (string.length <= 0) {
+//     return string;
+//   }
+//   isPalindromet(string.slice(1, string.length - 1));
+//   if (string[0] === string[string.length-1]) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// var palres = isPalindromet("palilap");
+// console.log(palres);
+
+
+// function reverse(string){
+//   // add whatever parameters you deem necessary - good luck!
+//   if(string.length <= 0) return string;
+//   var str = reverse(string.slice(1, string.length)) + string[0];
+//   return str;
+// }
+
+// var strres = reverse("awesome");
+// console.log(strres);
+
+// function junh(arr) {
+//     for (let i = 0; i < arr.length;i++) {
+//         console.log(arr);
+//         for(let j = i + 1; j > 0 && j < arr.length-1; j--) {
+//             if (arr[i] > arr[j]) {
+//                 swap(arr, i, j);
+//             }
+//         }
+//     }
+//     return arr;
+// }
+// function swap(array, i, j) {
+//     let temp = array[i]
+//     array[i] = array[j]
+//     array[j] = temp
+// }
+
+// console.log(junh([2,5,45,5,8,0,29,11]));
+
+// let fromPairst = (array) => {
+//     var acc = {};
+//     var art = array.forEach((ar) => {
+//         console.log(acc)
+//         console.log(ar[0])
+//         console.log(ar[1])
+//          if (ar[0] !== undefined) acc[ar[0]] = ar[1]
+//     },{})
+//     return acc;
+// }
+// let datat = [['a', 1], ['b', 2]];
+// console.log(fromPairst(datat)) // { 'a': 1, 'b': 2 }
+
+// let withoutt = (array, ...args) => {
+//     const fr = []
+// //     array.forEach((el) => {
+// //         if (!args.includes(el)){
+// //             fr.push(el);
+// //         }
+// //     })
+//     return array.filter((el) => !args.includes(el));
+// }
+// let datat = [1, 2, 3, 1, 2, 4, 5, 4, 1, 1];
+// console.log(withoutt(datat, 1, 2)); // [3]
+
+// let isEqualt = (firstArray, secondArray) => {
+//   return JSON.stringify(firstArray) == JSON.stringify(secondArray)
+// }
+// let arr1t = [1, 2, 3, 4];
+// let arr2t = [1, 2, 3, 4];
+// let arr3t = [1, 2, 3, 5];
+// let arr4t = [1, 2, 3, 4, 5];
+// console.log(isEqualt(arr1t, arr2t)); // true
+// console.log(isEqualt(arr1t, arr3t)); // false
+// console.log(isEqualt(arr1t, arr4t)); // false
+//let flatten = (array) => {
+    //var t = []
+//     for (let i = 0; i < array.length; i++) {
+//         if (Array.isArray(array[i])) {
+//             t.push(...flatten(array[i]));
+//         } else {
+//              t.push(array[i]);
+//         }
+//     }
+//return t;
+//     return array.reduce((acc, i) => {
+//         return acc.concat(i);
+//     }, [])
+
+//    return array.flat(3);
+//     let flattened = arr.reduce((acc, curVal) => {
+//         return acc.concat(curVal)
+//      }, []);
+    
+//}
+//let datah = [1, 2, [3, 4, [5]],7];
+//console.log(flatten(datah)); // [1, 2, 3, 4, 5]
+
+// let chunk = (array, size) => {
+//     var t = []
+//    for (let i = 0; i < array.length; i += size) {
+//        let n = [];
+//        for (let j = 0; j < size && (i + j) < array.length; j++) {
+//            n.push(array[i + j])
+//        }
+//        t.push(n);
+//    }
+//    return t;
+// }
+// let datai = [1, 2, 3, 4, 5, 6, 7];
+// console.log(chunk(datai, 2)) // [[1, 2], [3, 4], [5, 6], [7]]
+// console.log(chunk(datai, 3)) // [[1, 2, 3], [4, 5, 6], [7]]
+
+let intersections = (...arrays) => {
+//  return arrays.reduce((a, b) => {
+//      console.log('a', a)
+//      console.log('b', b)
+//      return a.filter(c => {
+//          console.log('c', c)
+//          return b.includes(c)
+//          })
+//      })
+function intersection (arr1, arr2) {
+    return arr1.filter((c) => arr2.includes(c))
+}
+    let inresult = [];
+    for (let i = 0; i< arrays.length && i !== 1 ; i++) {
+        if (i == 0) {
+            inresult = intersection(arrays[i], arrays[i+1])
+        } else {
+            inresult = intersection(inresult, arrays[i])
+        }
+    }
+    return inresult;
+}
+let arr1 = [1, 2];
+let arr2 = [2, 3];
+let arr3 = ['a', 'b'];
+let arr4 = ['b', 'c'];
+let arr5 = ['b', 'e', 'c'];
+let arr6 = ['b', 'b', 'e'];
+let arr7 = ['b', 'c', 'e'];
+let arr8 = ['b', 'e', 'c'];
+console.log(intersections(arr1, arr2)) // [2]
+console.log(intersections(arr3, arr4, arr5)) // ['b']
+console.log(intersections(arr6, arr7, arr8)) // ['b', 'e']

@@ -1,0 +1,18 @@
+var ab = [10, 2, 3, 0, 7, 5, 8];
+
+var reverseArray = (ab) => {
+    console.log(ab);
+    const mid = Math.floor(ab.length/2, 10);
+    for(let i = 0 ; i < mid; i++) {
+        swap(ab, i, ab.length - i - 1);
+    }
+    return ab;
+}
+
+var swap = (array, i, b) => {
+    temp = array[i];
+    array[i] = array[b];
+    array[b] = temp;
+}
+
+console.log(reverseArray(ab));

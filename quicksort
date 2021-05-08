@@ -1,0 +1,44 @@
+var quickly2 = (arr, low, high) => {
+    if (low < high) {
+        const pi = partition2(arr, low, high - 1);
+        quickly2(arr, low, pi);
+        quickly2(arr, pi + 1, high);
+    }
+}
+var partition2 = (arr, low, high) => {
+    let p = arr[high];
+    let i = low - 1;
+    console.log(arr[high]);
+    for (let j = low; j < high; j++) {
+        console.log(arr[j]);
+        if (arr[j] <= p) {
+            i++;
+            swap2(arr, i, j);
+        }
+        console.log(arr);
+    }
+    console.log('outer');
+    swap2(arr, i+1, high);
+    return i + 1;
+
+}
+var swap2 = (arr, i, j) => {
+    let temp = arr[j];
+    arr[j] = arr[i];
+    arr[i] = temp;
+}
+var unsorted = [100, 20, 10, 80, 75, 66, 4, 43, 1, 91];
+var unsorted2 = [10, 50, 30, 80, 90, 70];
+
+var sorted = quickly2(unsorted, 0, unsorted.length);
+console.log(unsorted);
+
+
+
+
+
+
+
+// [100, 20, 10, 80, 75, 66, 4, 43, 1, 91];
+
+// []

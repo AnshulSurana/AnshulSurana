@@ -1,0 +1,22 @@
+var selection = (array) => {
+   for (var i = 0; i < array.length - 1; i++) {
+       var minimum = i;
+       for(var j = i + 1; j < array.length; j++) {
+           if (array[j] < array[minimum]) {
+               console.log(array[minimum])
+               minimum = j;
+           }
+       }
+       swap2(array, minimum, i);
+   }
+   return array;
+}
+var swap2 = (arr, i, j) => {
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+var unsorted = [45, 36, 1, 7, 0, 11, 2, 44];
+console.log(selection(unsorted));
+console.log(unsorted);

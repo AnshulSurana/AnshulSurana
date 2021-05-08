@@ -1,0 +1,53 @@
+function stringSearch(long, str) {
+ var mat = false;
+ var l = 0;
+ var s = 0;
+ while(!mat && l < long.length) {
+    if (long[l] === str[s]) {
+        s++;
+    } else {
+        s = 0;
+    }
+    l++;
+    if (s === str.length) {
+      mat = true;
+    }
+ }
+ return mat;
+}
+var stseress = stringSearch('frish', 'frhi');
+console.log(stseress);
+
+// function binarySearch(array, val){
+//   // add whatever parameters you deem necessary - good luck!
+//   var prev = 0;
+//   var next  = array.length -1;
+//   var pivot = Math.floor((prev + next) / 2);
+//   var res = -1;
+//   while (array[pivot] !== val && next > prev) {
+//       if (val < array[pivot]) {
+//           next = pivot - 1;
+//       } else {
+//           prev = pivot + 1;
+//       }
+//       pivot = Math.floor((prev + next) / 2);
+//   }
+//   return array[pivot] === val ? pivot : -1;
+
+// }
+
+// var binress = binarySearch([1,2,3,4,5], 1);
+// console.log(binress);
+
+// function linearSearch(array, val){
+//   // add whatever parameters you deem necessary - good luck!
+//   var res = -1;
+//   for(let i = 0; i < array.length; i++) {
+//       if (array[i] === val) {
+//         res = i;
+//       }
+//   }
+//   return res;
+// }
+// var linress = linearSearch([10,14,13,13,14,15], 15);
+// console.log(linress);
